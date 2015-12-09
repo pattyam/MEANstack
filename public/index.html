@@ -1,0 +1,83 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<title>Employee Report </title>
+<style>
+	body {
+    padding-top: 60px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	background-color: #e5eeff;
+}
+navbar-header{
+	color: #ccddff;
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+    <div> class="topcontainer">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img alt="comapny logo" class="img-right" name="cityLogo" src="logo.png" title="City of chicago" width="210px" />
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width: 95%">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="primary first"><a href="index.html"><span>Employee Salary Report</span></a></li>
+                <li class="primary"><a href="index.html"><span>About</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<div class ="container" ng-controller="AppCtrl">
+		<h1>2015 Employee Report</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Department</th>
+				<th>Salary</th>
+				<th>Action</th>
+				<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><input class="form-control" ng-model="employee.name"></td>
+				<td><input class="form-control" ng-model="employee.pos"></td>
+				<td><input class="form-control" ng-model="employee.dept"></td>
+				<td><input class="form-control" ng-model="employee.sal"></td>
+				<td><button class="btn btn-success" ng-click="addEmp()">Add Record</button></td>
+				<td><button class="btn btn-primary" ng-click="updateEmp()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="clearall()">Reset</button></td>
+			
+			
+			</tr>
+			<tr ng-repeat="employee in emplist">
+			<td>{{employee.name}}</td>
+			<td>{{employee.pos}}</td>
+			<td>{{employee.dept}}</td>
+			<td>{{employee.sal}}</td>
+			<td><button class="btn btn-danger" ng-click="removeEmp(employee._id)">Remove </button></td>
+			<td><button class="btn btn-warning" ng-click="editEmp(employee._id)">Edit</button></td>
+			
+			</tbody>
+		</table>
+	</div>
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script src= "controllers/controller.js"></script>
+</body>
+</html>
